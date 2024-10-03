@@ -126,3 +126,14 @@ export interface BuySuppliesRpcResponse {
 export interface CollectAnimalProductRpcResponse {
     inventoryAnimalProductKey: string
 }
+
+export interface GetDeliveringProductsRpcResponse {
+  deliveringProductBasicKey: string;
+  deliveringProductPremiumKey: string;
+}
+
+export interface MarketPricing {
+  key: string;
+  basicAmount: number; 
+  premiumAmount: number; 
+}

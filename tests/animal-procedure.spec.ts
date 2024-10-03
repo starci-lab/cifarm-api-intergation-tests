@@ -193,7 +193,6 @@ describe("Should animal procedure work", () => {
                         ]
                     }) 
                     const inventory = inventories[0].value as Inventory
-                    console.log(inventory)
                     console.log(`Current inventory quantity: ${inventory.quantity}`)
                     if (inventory.quantity > 100) break
                 }
