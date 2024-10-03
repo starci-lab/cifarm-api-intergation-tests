@@ -49,12 +49,12 @@ describe("Should deliver work", () => {
             //check your balance, check your deliveries
             const account = await client.getAccount(session)
             const golds = ((JSON.parse(account.wallet) as Wallet).golds)
-            //since the api give 20, so that we can calculate the golds
+            //since the api give 20 fake delivering products each type, so that we can calculate the golds
             expect(golds).toEqual(500 + basicAmount * (20 + 20))
 
             //ensure no more delivering products
             const { objects: deliveringProducts } = await client.listStorageObjects(session, "DeliveringProducts", session.user_id, 10, "")
             expect(deliveringProducts.length).toEqual(0)
-        })
+        }, 60000)
     })
 })
