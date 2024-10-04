@@ -84,7 +84,7 @@ describe("Should buy tiles work", () => {
             const golds1 = (JSON.parse(account1.wallet) as Wallet).golds
             console.log(`Expect: ${golds1}`)
             console.log(
-                `Price: ${
+                `Actual: ${
                     500 + 10000000 - price * maxOwnership - price1 * maxOwnership1
                 }`
             )
@@ -119,7 +119,7 @@ describe("Should buy tiles work", () => {
             const golds2 = (JSON.parse(account2.wallet) as Wallet).golds
             console.log(`Expect: ${golds2}`)
             console.log(
-                `Price: ${
+                `Actual: ${
                     500 +
           10000000 -
           price * maxOwnership -
