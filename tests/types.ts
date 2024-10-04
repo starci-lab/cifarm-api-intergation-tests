@@ -137,3 +137,15 @@ export interface MarketPricing {
   basicAmount: number; 
   premiumAmount: number; 
 }
+
+export interface BuyTileRpcResponse {
+	placedItemTileKey: string
+}
+
+export interface Tile {
+  key: string;              
+  price: number;            
+  maxOwnership: number;     
+  isNft: boolean;           
+  availableInShop: boolean;
+}
