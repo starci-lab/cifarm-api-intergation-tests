@@ -149,3 +149,28 @@ export interface Tile {
   isNft: boolean;           
   availableInShop: boolean;
 }
+
+export interface PlayerStats {
+  key: string;
+  experiences: number;
+  experienceQuota: number;
+  level: number;
+  tutorialIndex: number;
+  stepIndex: number;
+  invites: Array<number>;
+}
+
+export interface Rewards {
+  key: string;
+  fromInvites: FromInvites;
+}
+
+export interface FromInvites {
+  key: string;
+  metrics: Record<number, Metric>; // Using Record for the map type
+}
+
+export interface Metric {
+  key: number;
+  value: number; // Use number for int64 in TypeScript
+}

@@ -18,8 +18,7 @@ describe("Should animal procedure work", () => {
             )
             client = new Client(config().nakama.serverkey, config().nakama.host, config().nakama.port, config().nakama.ssl)
             session = await client.authenticateCustom("", false, "", {
-                ...data.data,
-                network: "testnet",
+                ...data.data
             })
         })
         afterEach(async () => {

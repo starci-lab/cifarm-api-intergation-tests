@@ -19,10 +19,8 @@ describe("Should buy tiles work", () => {
                 config().nakama.ssl
             )
             session = await client.authenticateCustom("", false, "", {
-                ...data.data,
-                network: "testnet",
+                ...data.data
             })
-            console.log(`User id: ${session.user_id}`)
         })
         afterEach(async () => {
             await client.deleteAccount(session)
