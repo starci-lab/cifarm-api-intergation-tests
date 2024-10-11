@@ -69,7 +69,7 @@ export interface SeedGrowthInfo {
   totalTimeElapsed: number;
   harvestQuantityRemaining: number;
   crop: Crop;
-  plantCurrentState: number;
+  currentState: number;
   thiefedBy: Array<string>;
   fullyMatured: boolean;
   isPlanted: boolean;
@@ -163,6 +163,7 @@ export interface PlayerStats {
 export interface Rewards {
   key: string;
   fromInvites: FromInvites;
+  referred: number;
 }
 
 export interface FromInvites {
@@ -173,4 +174,55 @@ export interface FromInvites {
 export interface Metric {
   key: number;
   value: number; // Use number for int64 in TypeScript
+}
+
+export interface BuySeedsRpcParams {
+  key: string;
+  quantity: number;
+}
+
+export interface BuySeedsRpcResponse {
+  inventorySeedKey: string;
+}
+
+export interface HarvestCropRpcParams {
+  placedItemTileKey: string;
+}
+
+// Interface for HarvestCropRpcResponse
+export interface HarvestCropRpcResponse {
+  inventoryHarvestedCropKey: string;
+}
+
+export interface InventoryWithIndex {
+  index: number;
+  inventory: Inventory; // Assuming Inventory is defined elsewhere
+}
+
+// Interface for DeliverProductsRpcParams
+export interface DeliverProductsRpcParams {
+  inventoryWithIndex: InventoryWithIndex
+}
+
+// Interface for DeliverProductsRpcResponse
+export interface DeliverProductsRpcResponse {
+  deliveringProductKey: string;
+}
+
+export interface DeliveringProduct {
+  key: string;
+  referenceKey: string;
+  type: number; // Assuming 'type' is intended to be a number (similar to Go's int)
+  quantity: number;
+  premium: boolean;
+  index: number;
+}
+
+export interface RetainProductsRpcParams {
+  deliveringProduct: DeliveringProduct;
+}
+
+// Interface for RetainProductsRpcResponse
+export interface RetainProductsRpcResponse {
+  inventoryKey: string;
 }

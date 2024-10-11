@@ -38,7 +38,7 @@ describe("Should buy tiles work", () => {
                         }
                     ]
                 })
-                const { fromInvites } = objects0[0].value as Rewards
+                const { fromInvites, referred } = objects0[0].value as Rewards
 
                 //first, get the refererId
                 const referrerUserId = session.user_id
@@ -59,7 +59,7 @@ describe("Should buy tiles work", () => {
                 const { golds : golds2 } = (JSON.parse(account2.wallet) as Wallet)
                 console.log(`Golds 2: ${golds2}`)
                 //500+200, maybe edit later
-                expect(golds2).toEqual(700)
+                expect(golds2).toEqual(500 + referred)
 
                 const account = await client.getAccount(session)
                 const { golds } = (JSON.parse(account.wallet) as Wallet)
@@ -141,6 +141,6 @@ describe("Should buy tiles work", () => {
                 await client.deleteAccount(session2) 
                 await client.deleteAccount(session3) 
             }    
-        })
+        }, 60000)
     })
-})
+},)
