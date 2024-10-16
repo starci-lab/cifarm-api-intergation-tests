@@ -226,3 +226,70 @@ export interface RetainProductsRpcParams {
 export interface RetainProductsRpcResponse {
   inventoryKey: string;
 }
+
+export interface LastDailyRewardPossibility {
+  key: string;
+  goldAmount: number;      
+  tokenAmount: number;   
+  thresholdMin: number;    
+  thresholdMax: number;   
+}
+
+export interface DailyReward {
+  key: string;                                       
+  amount: number;                                    
+  day: number;                                     
+  isLastDay: boolean;                                
+  dailyRewardPossibilities?: {                        
+      [key: number]: LastDailyRewardPossibility;
+  };
+}
+
+export interface CropRandomness {
+  key: string;                              
+  theif3: number;                             
+  theif2: number;                            
+  needWater: number;                        
+  isWeedyOrInfested: number;                 
+}
+
+export interface TokenConfigure {
+  key: string;                               
+  decimals: number;                         
+}
+
+export interface StarterConfigure {
+  key: string;                                 
+  goldAmount: number;                          
+}
+
+export interface SpinConfigure {
+  key: string;                                 
+  spinPrice: number;                           
+  freeSpinTime: number;                       
+}
+
+export interface ClaimDailyRewardRpcParams {
+  forward: number;
+}
+
+export interface ClaimDailyRewardRpcResponse {
+  lastDailyRewardPossibility: LastDailyRewardPossibility;
+}
+
+export interface RewardTracker {
+  key: string;
+  dailyRewardsInfo: DailyRewardsInfo;
+  spinInfo: SpinInfo;
+}
+
+export interface DailyRewardsInfo {
+  streak: number;
+  lastClaimTime: number;
+  numberOfClaims: number;
+}
+
+export interface SpinInfo {
+  lastSpinTime: number;
+  spinCount: number;
+}
