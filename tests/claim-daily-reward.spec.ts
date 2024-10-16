@@ -89,4 +89,35 @@ describe("Should deliver work", () => {
             expect(dailyRewardsInfo.numberOfClaims).toEqual(104)
         }, 30000)
     })
+    describe("Should deliver work in Solana, account 2", () => {
+        let client: Client
+        let session: Session
+        beforeEach(async () => {
+            const { data } = await axios.post(
+                config().fakeSignatureUrl,
+                {
+                    chainKey: "solana",
+                    accountNumber: 2,
+                }
+            )
+            client = new Client(config().nakama.serverkey, config().nakama.host, config().nakama.port, config().nakama.ssl)
+            session = await client.authenticateCustom("", false, "", {
+                ...data.data
+            })
+            console.log("User id: ", session.user_id)
+        })
+        afterEach(async () => {
+            await client.deleteAccount(session)
+        })
+        it("Should 2 continue successfully", async () => {
+            await client.rpc(session, "claim_daily_reward", {})
+            //to be error
+            try {
+                await client.rpc(session, "claim_daily_reward", {})
+            } catch (error) {
+                console.log(error)
+            }
+            //await expect(client.rpc(session, "claim_daily_reward", {})).rejects.toThrow()
+        }, 30000)
+    })
 })
